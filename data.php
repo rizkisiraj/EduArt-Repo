@@ -13,7 +13,4 @@
             "writer" => "Johnny Delorean"
         ),
     );
-
-    
-    
 ?>

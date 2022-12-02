@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <link rel="stylesheet" href="loginv2.css">
+    <link rel="stylesheet" href="./styles/loginv.css">
     <!--<title>Login & Registration Form</title>-->
 </head>
 
@@ -24,15 +24,6 @@
                         <input type="password" class="password" placeholder="Enter your password" required>
                         <i class="uil uil-lock icon"></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
-                    </div>
-
-                    <div class="checkbox-text">
-                        <div class="checkbox-content">
-                            <input type="checkbox" id="logCheck">
-                            <label for="logCheck" class="text">Remember me</label>
-                        </div>
-                        
-                        <a href="#" class="text">Forgot password?</a>
                     </div>
 
                     <div class="input-field button">
@@ -90,6 +81,6 @@
             </div>
         </div>
     </div>
-    <script src="loginv2.js"></script>
+    <script src="./scripts/loginv2.js"></script>
 </body>
 </html>

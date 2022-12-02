@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    font-size: 3rem;
+    color: white;
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+}
+
+h2.small-card-title {
+    font-size: 1.2rem;
+}
+
+.image-card {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.section-card-image {
+    height: 150px;
+    width: 100%;
+}
+
+nav {
+    background-color: #6E85B7;
+    color: white !important;
+}
+
+.very-small-card h2 {
+    font-size: 1rem;
+}
+
+.very-small-card img {
+    max-height: 200px;
+    width: 100%;
+}
+
+.very-small-card h2 {
+    color: black;
+}
+
+.very-small-card p {
+    font-size: 0.8rem;
+    color: black;
+}
+
+.article-header {
+    font-family: 'Poppins', sans-serif;
+    background-color: #6E85B7;
+    position: relative;
+    overflow-x: hidden;
+    overflow: hidden;
+}
+
+.article-header::before {
+    content: "";
+    position: absolute;
+    background-color: #D9AFD9;
+    background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+    left: 50px;
+    top: 10px;
+    width: 500px;
+    height: 500px;
+    border-radius: 999px;
+    z-index: -1;
+    filter: blur(90px);
+}
+
+.article-header::after {
+    content: "";
+    position: absolute;
+    background-color: #85FFBD;
+    background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+    right: 50px;
+    bottom: -20px;
+    width: 500px;
+    height: 500px;
+    border-radius: 999px;
+    z-index: -1;
+    filter: blur(90px);
+}

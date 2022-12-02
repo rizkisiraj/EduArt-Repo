@@ -6,37 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles/landing.css">
+    <link rel="stylesheet" href="./styles/landingPage1.css">
 </head>
   <body>
-    <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid d-flex px-4">
-        <a class="navbar-brand d-block" href="#">
-            <img width="120" src="./assets/Logo.png" alt="logo">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarScroll">
-        <ul class="navbar-nav mx-auto my-2 my-lg-0" style="--bs-scroll-height: 100px;">
-            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Courses</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">
-                Articles
-            </a>
-            </li>
-        </ul>
-        <button class="btn btn-sign-in btn-primary">
-            Sign Up
-        </button>
-        </div>
-    </div>
-    </nav>
+  <?php
+        include('header.php')
+    ?>
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -47,8 +22,8 @@
         <div class="carousel-item active satu w-full">
           <div class="container items-1">
             <div class="row align-items-center">
-              <div class="col">
-                <h2>Platform Terbaik Untuk Belajar Seni Online dan Offline</h2>
+              <div class="col-md-6 col-12 mt-2 mt-md-1">
+                <h2>Platform <span class="green">Terbaik</span> Untuk <span class="green">Belajar Seni</span> Online dan Offline</h2>
                 <p>Belajar musik sesuai dengan yang kamu mau</p>
                 <div>
                   <a class="btn btn-primary">
@@ -59,7 +34,7 @@
                   </a>
                 </div>
               </div>
-              <div class="col">
+              <div class="col-md-6 col-12">
                 <img src="./assets/Saly-13.png" alt="carousel satu">
               </div>
             </div>
@@ -68,7 +43,7 @@
         <div class="carousel-item active dua w-full">
           <div class="container items-1">
             <div class="row align-items-center">
-              <div class="col">
+              <div class="col-md-6 col-12 mt-2 mt-md-1">
                 <h2>Platform Terbaik Untuk Belajar Seni Online dan Offline</h2>
                 <p>Belajar musik sesuai dengan yang kamu mau</p>
                 <div>
@@ -80,7 +55,7 @@
                   </a>
                 </div>
               </div>
-              <div class="col">
+              <div class="col-md-6 col-12">
                 <img src="./assets/Saly-13.png" alt="carousel satu">
               </div>
             </div>
@@ -89,7 +64,7 @@
         <div class="carousel-item active tiga w-full">
           <div class="container items-1">
             <div class="row align-items-center">
-              <div class="col">
+              <div class="col-md-6 col-12 mt-2 mt-md-1">
                 <h2>Platform Terbaik Untuk Belajar Seni Online dan Offline</h2>
                 <p>Belajar musik sesuai dengan yang kamu mau</p>
                 <div>
@@ -101,7 +76,7 @@
                   </a>
                 </div>
               </div>
-              <div class="col">
+              <div class="col-md-6 col-12">
                 <img src="./assets/Saly-13.png" alt="carousel satu">
               </div>
             </div>
@@ -109,20 +84,27 @@
         </div>
       </div>
   </div>
-    <section class="container px-4 mt-5">
+    <section class="section-page">
+    <section class="container px-4 pt-4 mt-5">
       <div class="row text-center">
-        <h2>Browse Our Courses</h2>
+        <h2 class="green">Browse Our Courses</h2>
       </div>
       <div class="row content-container rounded-top justify-content-center">
       <?php
           for ($i=0; $i < count($courses); $i++) { 
-            echo "<div class='col'>
-            <div class='card mx-auto' style='width: 18rem;'>
-              <img src='https://picsum.photos/200' class='card-img-top' alt='card-img' height='180px'>
-              <div class='card-body'>
+            echo "<div class='col mt-4 mt-lg-1'>
+            <div class='mx-auto card' style='height: 100%''>
+            <div class='card-body'>
+            <div class='position-relative'>
+              <img src='https://picsum.photos/200' class='card-img' alt='card-img' height='180px'>
+              <span class='position-absolute badge text-bg-secondary'>New</span>
+            </div>
                 <h5 class='card-title'>".$courses[$i]["card_title"]."</h5>
                 <p class='card-text'>".$courses[$i]["writer"]."</p>
-                <a href='#' class='btn btn-primary'>Pilih</a>
+              </div>
+              <div class='card-footer d-flex justify-content-between align-items-center'>
+              <p>Rp. 500k</p>
+              <a href='#' class='btn btn-primary d-block'>Pilih</a>
               </div>
             </div>
           </div>";
@@ -130,15 +112,28 @@
         ?>
       </div>
     </section>
-    <section class="container px-4 mt-5">
+    </section>
+    <section class="container px-4 mt-5 section-bawah">
+      <div class="row justify-content-center align-items-center flex-column-reverse flex-md-row">
+        <div class="col-12 col-lg-4 text-lg-start text-center">
+          <h3>Tingkatkan skill dengan mengikuti puluhan kursus yang tersedia</h3>
+          <p>Tersedia puluhan kursus yang siap membantu kamu mempelajari dan mengeksplorasi minat dan bakat kamu</p>
+        </div>
+        <div class="col-12 col-lg-4 text-center">
+            <img class="gambar-section-bawah" src="./assets/gambar-tari.png" alt="gambar tari">
+        </div>
+      </div>
+    </section>
+    <section class="section-page">
+    <section class="container px-4 mt-5 pt-4">
       <div class="row text-center">
-        <h2>Browse Our Articles</h2>
+        <h2 class="green">Browse Our Articles</h2>
       </div>
       <div class="row content-container rounded-top justify-content-center">
       <?php
           for ($i=0; $i < count($courses); $i++) { 
-            echo "<div class='col'>
-            <div class='card mx-auto' style='width: 18rem;'>
+            echo "<div class='col-12 col-lg mt-4 mt-lg-1'>
+            <div class='card mx-auto' style='height: 100%'>
               <img src='https://picsum.photos/200' class='card-img-top' alt='card-img' height='180px'>
               <div class='card-body'>
                 <h5 class='card-title'>".$courses[$i]["card_title"]."</h5>
@@ -148,6 +143,18 @@
           </div>";
           }
         ?>
+      </div>
+    </section>
+    </section>
+    <section class="container px-4 mt-5 section-bawah">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-12 col-lg-4 text-center">
+        <img class="gambar-section-bawah" src="./assets/gambar-instruktur.png" alt="gambar tari">
+      </div>
+      <div class="col-12 col-lg-4 text-lg-start text-center">
+        <h3>Jadilah instruktur</h3>
+        <p>Semua orang butuh bantuanmu, jadilah instruktur untuk terus membantu orang lain belajar</p>
+      </div>
       </div>
     </section>
     <footer class="mt-5">
