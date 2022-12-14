@@ -2,17 +2,23 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
 }
 
 h1 {
     font-size: 3rem;
-    color: white;
+    color: #20b486;
+}
+
+.badge {
+    top: 10px;
+    left: 10px;
 }
 
 h2 {
     font-size: 1.8rem;
     font-weight: bold;
-    color: white;
+    color: #20b486;
 }
 
 h2.small-card-title {
@@ -31,7 +37,7 @@ h2.small-card-title {
 }
 
 nav {
-    background-color: #6E85B7;
+    background-color: #F0FBF7;
     color: white !important;
 }
 
@@ -55,7 +61,7 @@ nav {
 
 .article-header {
     font-family: 'Poppins', sans-serif;
-    background-color: #6E85B7;
+    background-color: #F0FBF7;
     position: relative;
     overflow-x: hidden;
     overflow: hidden;

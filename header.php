@@ -1,4 +1,9 @@
 <?php
+session_start();
+$userAkun = '';
+if(isset($_SESSION['login'])) {
+    $userAkun = $_SESSION['nama'];
+}
     echo '<nav class="navbar navbar-expand-lg">
     <div class="container-fluid d-flex px-4">
         <a class="navbar-brand d-block" href="#">
@@ -13,17 +18,34 @@
                 <a class="nav-link" aria-current="page" href="landing.php">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="courseDetail.php">Courses</a>
+                <a class="nav-link" href="courses.php">Kursus</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="articles.php">
-                    Articles
+                    Artikel
                 </a>
-            </li>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="buatKursus.php">
+                    Buat Kursus
+                </a>
+                </li>
         </ul>
-        <a class="btn btn-sign-in btn-primary" href="loginv2.php">
-            Sign Up
-        </a>
+        <div class="me-lg-2">
+            <a class="btn btn-success" href="keranjang.php">
+            <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+        </div>
+        <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                '.$userAkun.'
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-lg-end">
+                <li><a class="dropdown-item" href="./profile.php">Profile</a></li>
+                <li><a class="dropdown-item" href="./logout.control.php">Logout</a></li>
+            </ul>
+        </div>
         </div>
     </div>
     </nav>'

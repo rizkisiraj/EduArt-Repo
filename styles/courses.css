@@ -1,0 +1,76 @@
+body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.carousel-header {
+    height: 500px;
+}
+
+.carousel-image {
+    filter: brightness(.3);
+    object-fit: fill;
+}
+
+.image-header {
+    max-width: 100%;
+    display: none;
+}
+
+.content-container {
+    position: relative;
+    padding: 2rem;
+}
+
+.content-container::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 40%;
+    background-color: #6a76df;
+    bottom: 0;
+    left: 0;
+    border-radius: 20px 20px 0 0;
+}
+
+.badge {
+    top: 10px;
+    left: 10px;
+}
+
+@media screen and (max-width: 1180px) {
+    .content-container::after {
+        display: none;
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+footer {
+    width: 100%;
+    z-index: 10;
+}
+
+.green {
+    color: #20b486;
+}
+
+.bg-green {
+    background-color: #F0FBF7;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.row {
+    width: 100%;
+}
