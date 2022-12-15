@@ -195,6 +195,36 @@
 
         }
 
+        public static function displayArtikelDiTabel($email,$con) {
+        $sql = "SELECT idArtikel,namaArtikel,email_penulis,deskripsi,nama,kategori FROM artikel JOIN akun ON artikel.email_penulis = akun.email WHERE email_penulis = '$email'";
+        
+            $result = mysqli_query($con, $sql);
+            if(!$result) {
+                die(mysqli_error($con));
+            }
+
+            if(mysqli_num_rows($result) == 0) {
+              echo "
+                <p class='text-center'>Tidak Ada Artikel</p>
+              ";
+            }
+
+            while($row = mysqli_fetch_assoc($result)) { 
+                echo "<div class='list-group-item d-flex justify-content-between'>
+                <div>
+                <p>
+                    ".$row['namaArtikel']." <span class='badge bg-secondary'>".$row['kategori']."</span>
+                </p>
+                </div>
+                <div>
+                    <a href='editArtikel.php' class='btn btn-primary'>Edit</a>
+                    <a href='hapusArtikel.php?idArtikel=".$row['idArtikel']."' class='btn btn-danger'>Hapus</a>
+                </div>
+            </div>";
+            }
+
+        }
+
         public static function displayArtikelDenganKategori($kategori,$con) {
           $sql = "SELECT idArtikel,namaArtikel,email_penulis,deskripsi,nama,kategori FROM artikel JOIN akun ON artikel.email_penulis = akun.email WHERE artikel.kategori = '$kategori'";
 

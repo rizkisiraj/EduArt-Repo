@@ -43,11 +43,11 @@
             <div class="col-12 col-lg-8 mt-2 mt-lg-0">
                 <div class="row justify-content-between">
                     <div class="col-lg-3 col-12 text-center tracker-card rounded shadow-sm mb-2 mb-lg-0">
-                        <h2 class='h5'>Kursus Dibuat</h2>
+                        <h2 class='h5'><a class="nav-link" href="kursusTabel.php">Kursus Dibuat</a></h2>
                         <p class="tracker"><?php echo DisplayData::displayJumlahKursusDibuat($con, $_SESSION['email']); ?></p>
                     </div>
                     <div class="col-lg-3 col-12 text-center tracker-card rounded shadow-sm mb-2 mb-lg-0">
-                        <h2 class="h5">Artikel Dibuat</h2>
+                        <h2 class="h5"><a class="nav-link" href="kursusTabel.php">Artikel Dibuat</a></h2>
                         <p class="tracker"><?php echo DisplayData::displayJumlahArtikelDibuat($con, $_SESSION['email']); ?></p>
                     </div>
                     <div class="col-lg-5 col-12 text-center tracker-card rounded shadow-sm">
@@ -68,5 +68,6 @@
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/7ece949bc8.js" crossorigin="anonymous"></script>
 </body>
 </html>
