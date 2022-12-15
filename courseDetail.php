@@ -33,21 +33,30 @@ if(isset($_GET['id_kursus'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/courseDetailPage1.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Course Detail</title>
 </head>
 <body>
     <?php
     include('header.php');
     if(isset($_POST['submit'])) {
+
         $arr = $_SESSION['keranjang'];
         $key = array_search($id_kursus, $_SESSION['keranjang']);
         if($key != '') {
             $key = array_search($id_kursus, $_SESSION['keranjang']);
             unset($_SESSION['keranjang'][$key]);
-            print_r($_SESSION['keranjang']);
+        } else {
+            $emailPembeli = $_SESSION['email'];
+
+            $perintahSql = "SELECT email_pembeli FROM transaksi WHERE id_kursus = $id_kursus AND email_pembeli = '$emailPembeli'";
+            $result = mysqli_query($con, $perintahSql);
+        if(mysqli_num_rows($result) > 0) {
+            $_SESSION['sudah ada'] = "sudah ada";
         } else {
             array_push($_SESSION['keranjang'], $id_kursus);
-            header("location:courseDetail.php?id_kursus=$id_kursus");
+
+        }
         }
     }
     ?>
@@ -68,7 +77,13 @@ if(isset($_GET['id_kursus'])) {
                    <p><strong><?php echo $displayData->konversiKeRupiah($harga); ?></strong></p>
                    <form action="courseDetail.php?id_kursus=<?php echo $id_kursus?>" method="post">
 
-                       <input name="submit" type="submit" class="btn btn-secondary" value=
+                       <input name="submit" type="submit" class="btn btn-secondary" 
+                       <?php
+                        if($email_penulis == $_SESSION['email']) {
+                           echo "disabled";
+                        }
+                       ?>
+                       value=
                        <?php
                        $key = array_search($id_kursus, $_SESSION['keranjang']);
                        if($key != '') {
@@ -87,5 +102,19 @@ if(isset($_GET['id_kursus'])) {
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/7ece949bc8.js" crossorigin="anonymous"></script>
+    <?php
+    if(isset($_SESSION['sudah ada'])) {
+        echo "
+        <script>
+            Swal.fire(
+            'Kamu sudah membeli kursus ini',
+            '1 Akun tidak bisa membeli 1 kursus yang sama',
+            'error'
+            );
+        </script>
+        ";
+        unset($_SESSION['sudah ada']);
+    }
+    ?>
 </body>
 </html>

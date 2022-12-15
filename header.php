@@ -26,8 +26,8 @@ if(isset($_SESSION['login'])) {
                 </a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="buatKursus.php">
-                    Buat Kursus
+                <a class="nav-link" href="buatArtikel.php">
+                    Buat Artikel
                 </a>
                 </li>
         </ul>

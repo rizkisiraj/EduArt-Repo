@@ -19,10 +19,10 @@
                 <h2>Platform <span class="green">Terbaik</span> Untuk <span class="green">Belajar Seni</span> Online dan Offline</h2>
                 <p>Belajar musik sesuai dengan yang kamu mau</p>
                 <div>
-                  <a class="btn btn-primary">
+                  <a class="btn btn-primary" href="courses.php">
                     Explore Course
                   </a>
-                  <a class="btn btn-danger">
+                  <a class="btn btn-danger" href="articles.php">
                     See Articles
                   </a>
                 </div>

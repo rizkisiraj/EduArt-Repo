@@ -15,6 +15,7 @@
     <?php
     include('header.php');
     include('connect.php');
+    include('DisplayData.php');
 
     $perintahSql = "SELECT * FROM akun WHERE email = '" . $_SESSION['email'] . "'";
     $hasil = mysqli_query($con,$perintahSql);
@@ -27,9 +28,9 @@
     ?>
     
 
-    <section class="container px-4">
+    <section class="container px-4 px-sm-0">
         <div class="row">
-            <div class="col-12 col-md-3 me-md-2 profile-data">
+            <div class="col-12 col-lg-3 me-md-4 profile-data shadow-sm rounded">
                 <img class="w-full profile-image rounded-circle" src="https://picsum.photos/200" alt="profile">
                 <div>
                     <hr>
@@ -39,23 +40,28 @@
                     <p>Facebook : Aceng Rahmat</p>
                 </div>
             </div>
-            <div class="col-12 col-md-8 container-fluid">
-                <div class="row">
-                    <ul class="list-group">
-                        <li class="list-group-item green" aria-disabled="true">List Course yang Dijual</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                        <li class="list-group-item">A fourth item</li>
-                        <li class="list-group-item">And a fifth one</li>
-                    </ul>
+            <div class="col-12 col-lg-8 mt-2 mt-lg-0">
+                <div class="row justify-content-between">
+                    <div class="col-lg-3 col-12 text-center tracker-card rounded shadow-sm mb-2 mb-lg-0">
+                        <h2 class='h5'>Kursus Dibuat</h2>
+                        <p class="tracker"><?php echo DisplayData::displayJumlahKursusDibuat($con, $_SESSION['email']); ?></p>
+                    </div>
+                    <div class="col-lg-3 col-12 text-center tracker-card rounded shadow-sm mb-2 mb-lg-0">
+                        <h2 class="h5">Artikel Dibuat</h2>
+                        <p class="tracker"><?php echo DisplayData::displayJumlahArtikelDibuat($con, $_SESSION['email']); ?></p>
+                    </div>
+                    <div class="col-lg-5 col-12 text-center tracker-card rounded shadow-sm">
+                    <h2 class="h5">Penghasilan</h2>
+                        <p class="tracker"><?php echo DisplayData::displayJumlahPenghasilan($con, $_SESSION['email']); ?></p>
+                    </div>
                 </div>
-                <div class="row mt-2">
+                <div class="row mt-4">
                 <ul class="list-group">
-                        <li class="list-group-item green" aria-disabled="true">List Course yang Dibeli</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                        <li class="list-group-item">A fourth item</li>
-                        <li class="list-group-item">And a fifth one</li>
+                        <li class="list-group-item green" aria-disabled="true"><strong>Riwayat Transaksi</strong></li>
+                        <?php
+                        DisplayData::displayRiwayatTransaksi($con, $_SESSION['email']);
+                        ?>
+                        <li class="list-group-item"><a class="list-a" href="#">More</a></li>
                     </ul>
                 </div>
             </div>

@@ -91,7 +91,9 @@
         <h5>No Telepon</h5>
         <input type="text" name="noTelepon" value="" placeholder="08...">
     </div>
-    <button class="btn btn-primary d-block bayar">Bayar</button>
+    <button class="btn btn-primary d-block bayar <?php if(count($_SESSION['keranjang']) == 0) {
+        echo 'disabled';
+    } ?>">Bayar</button>
     </div>
 </div>
 </div>

@@ -2,7 +2,7 @@
 include('connect.php');
 $id = $_GET['idArtikel'];
 
-$perintahSql = "SELECT idArtikel,namaArtikel,deskripsi,kategori,nama FROM artikel JOIN akun ON artikel.email_penulis = akun.email";
+$perintahSql = "SELECT idArtikel,namaArtikel,deskripsi,kategori,nama FROM artikel JOIN akun ON artikel.email_penulis = akun.email WHERE idArtikel = $id";
 $hasil = mysqli_query($con,$perintahSql);
 ?>
 
