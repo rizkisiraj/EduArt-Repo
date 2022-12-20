@@ -1,5 +1,5 @@
 <?php
-$daftarKategori = array('Semua', 'Musik', 'Cerita', 'Lukis', 'Tarian');
+    $daftarKategori = array('Semua', 'Musik', 'Cerita', 'Lukis', 'Tarian');
     if(isset($_GET['kategori'])) {
         for($i=0; $i < count($daftarKategori); $i++) {
             if($daftarKategori[$i] == $_GET['kategori']) {

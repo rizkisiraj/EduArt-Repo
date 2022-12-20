@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/profile.css">
-    <title>Document</title>
+    <title>EduArt | ViperGloo</title>
 </head>
 <body>
     <?php
@@ -31,13 +31,20 @@
     <section class="container px-4 px-sm-0">
         <div class="row">
             <div class="col-12 col-lg-3 me-md-4 profile-data shadow-sm rounded">
-                <img class="w-full profile-image rounded-circle" src="https://picsum.photos/200" alt="profile">
+                <img class="w-full profile-image rounded-circle" src="<?php 
+                if($row['link_foto_akun'] == null) {
+                    echo "./assets/avatarTemplate.png";
+                } else {
+                    echo $row['link_foto_akun'];
+                }
+                ?>" alt="profile">
                 <div>
                     <hr>
                     <h2><?php echo $_SESSION['nama']; ?></h2>
                     <p>no-telepon : <?php echo $row['no_telepon'] ?></p>
-                    <p>Instagram : @kangdayat</p>
-                    <p>Facebook : Aceng Rahmat</p>
+                    <div>
+                        <a href="editProfile.php" class="btn btn-primary"><i class="fa-solid fa-pencil"></i> Edit Profil</a>
+                    </div>
                 </div>
             </div>
             <div class="col-12 col-lg-8 mt-2 mt-lg-0">
@@ -47,7 +54,7 @@
                         <p class="tracker"><?php echo DisplayData::displayJumlahKursusDibuat($con, $_SESSION['email']); ?></p>
                     </div>
                     <div class="col-lg-3 col-12 text-center tracker-card rounded shadow-sm mb-2 mb-lg-0">
-                        <h2 class="h5"><a class="nav-link" href="kursusTabel.php">Artikel Dibuat</a></h2>
+                        <h2 class="h5"><a class="nav-link" href="artikelTabel.php">Artikel Dibuat</a></h2>
                         <p class="tracker"><?php echo DisplayData::displayJumlahArtikelDibuat($con, $_SESSION['email']); ?></p>
                     </div>
                     <div class="col-lg-5 col-12 text-center tracker-card rounded shadow-sm">
@@ -61,7 +68,7 @@
                         <?php
                         DisplayData::displayRiwayatTransaksi($con, $_SESSION['email']);
                         ?>
-                        <li class="list-group-item"><a class="list-a" href="#">More</a></li>
+                        <li class="list-group-item"><a class="list-a" href="riwayat.php">More</a></li>
                     </ul>
                 </div>
             </div>

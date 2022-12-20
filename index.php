@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Demo</title>
+    <title>EduArt | ViperGloo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/landingPage1.css">
 </head>
@@ -17,7 +17,7 @@
             <div class="row align-items-center">
               <div class="col-md-6 col-12 mt-2 mt-md-1">
                 <h2>Platform <span class="green">Terbaik</span> Untuk <span class="green">Belajar Seni</span> Online dan Offline</h2>
-                <p>Belajar musik sesuai dengan yang kamu mau</p>
+                <p>Belajar seni sesuai dengan yang kamu mau</p>
                 <div>
                   <a class="btn btn-primary" href="courses.php">
                     Explore Course

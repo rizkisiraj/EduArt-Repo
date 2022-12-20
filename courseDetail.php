@@ -34,7 +34,7 @@ if(isset($_GET['id_kursus'])) {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/courseDetailPage1.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Course Detail</title>
+    <title>EduArt | ViperGloo</title>
 </head>
 <body>
     <?php
@@ -55,7 +55,6 @@ if(isset($_GET['id_kursus'])) {
             $_SESSION['sudah ada'] = "sudah ada";
         } else {
             array_push($_SESSION['keranjang'], $id_kursus);
-
         }
         }
     }

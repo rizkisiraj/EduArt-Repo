@@ -18,7 +18,7 @@
 
             while($row = mysqli_fetch_assoc($result)) {
 
-                echo "<div class='col-12 col-md-6 col-lg-4 mt-4 mt-lg-1'>
+                echo "<div class='col-12 col-md-6 col-lg-4 mt-4'>
                   <div class='mx-auto card' style='height: 100%''>
                   <div class='card-body'>
                   <div class='position-relative'>
@@ -217,8 +217,38 @@
                 </p>
                 </div>
                 <div>
-                    <a href='editArtikel.php' class='btn btn-primary'>Edit</a>
+                    <a href='editArtikel.php?idArtikel=".$row['idArtikel']."' class='btn btn-primary'>Edit</a>
                     <a href='hapusArtikel.php?idArtikel=".$row['idArtikel']."' class='btn btn-danger'>Hapus</a>
+                </div>
+            </div>";
+            }
+
+        }
+
+        public static function displayKursusDiTabel($email,$con) {
+        $sql = "SELECT id_kursus,namaKursus,email_penulis,deskripsi,nama,kategori FROM kursus JOIN akun ON kursus.email_penulis = akun.email WHERE email_penulis = '$email'";
+        
+            $result = mysqli_query($con, $sql);
+            if(!$result) {
+                die(mysqli_error($con));
+            }
+
+            if(mysqli_num_rows($result) == 0) {
+              echo "
+                <p class='text-center'>Tidak Ada Artikel</p>
+              ";
+            }
+
+            while($row = mysqli_fetch_assoc($result)) { 
+                echo "<div class='list-group-item d-flex justify-content-between'>
+                <div>
+                <p>
+                    ".$row['namaKursus']." <span class='badge bg-secondary'>".$row['kategori']."</span>
+                </p>
+                </div>
+                <div>
+                    <a href='editKursus.php?idKursus=".$row['id_kursus']."' class='btn btn-primary'>Edit</a>
+                    <a href='hapusKursus.php?idKursus=".$row['id_kursus']."' class='btn btn-danger'>Hapus</a>
                 </div>
             </div>";
             }
@@ -282,18 +312,49 @@
         }
 
         public static function displayRiwayatTransaksi($con, $email) {
-          $perintahSQL = "SELECT id_transaksi,email_pembeli,namaKursus,harga,penjual.nama AS 'nama penjual', pembeli.nama AS 'nama pembeli' FROM transaksi JOIN kursus ON transaksi.id_kursus = kursus.id_kursus JOIN akun pembeli ON transaksi.email_pembeli = pembeli.email JOIN akun penjual ON penjual.email = kursus.email_penulis WHERE transaksi.email_pembeli = '$email' OR kursus.email_penulis = '$email' LIMIT 4";
+          $perintahSQL = "SELECT id_transaksi,email_pembeli,namaKursus,harga,penjual.nama AS 'nama penjual', pembeli.nama AS 'nama pembeli' FROM transaksi JOIN kursus ON transaksi.id_kursus = kursus.id_kursus JOIN akun pembeli ON transaksi.email_pembeli = pembeli.email JOIN akun penjual ON penjual.email = kursus.email_penulis WHERE transaksi.email_pembeli = '$email' OR kursus.email_penulis = '$email' ORDER BY id_transaksi DESC LIMIT 4";
 
           $hasil = mysqli_query($con, $perintahSQL);
           if($hasil) {
             while($row = mysqli_fetch_assoc($hasil)) {
               if($row['email_pembeli'] == $email) {
                 echo "
-                <li class='list-group-item'>Kamu membeli kursus ".$row['namaKursus']. " (-".(new self)->konversiKeRupiah($row['harga']).")</li>
+                <li class='list-group-item'>Kamu membeli kursus ".$row['namaKursus']. "<span class='red'> (-".(new self)->konversiKeRupiah($row['harga']).")</span></li>
                 ";
               } else {
                 echo "
-                <li class='list-group-item'>".$row['nama pembeli']." membeli kursus ".$row['namaKursus']." (+".(new self)->konversiKeRupiah($row['harga']).")</li>
+                <li class='list-group-item'>".$row['nama pembeli']." membeli kursus ".$row['namaKursus']."<span class='green'> (+".(new self)->konversiKeRupiah($row['harga']).")</span></li>
+                ";
+              }
+            }
+            
+          }
+        }
+
+        public static function displayRiwayatTransaksiTabel($con, $email) {
+          $perintahSQL = "SELECT id_transaksi,email_pembeli,namaKursus,harga,penjual.nama AS 'nama penjual', pembeli.nama AS 'nama pembeli' FROM transaksi JOIN kursus ON transaksi.id_kursus = kursus.id_kursus JOIN akun pembeli ON transaksi.email_pembeli = pembeli.email JOIN akun penjual ON penjual.email = kursus.email_penulis WHERE transaksi.email_pembeli = '$email' OR kursus.email_penulis = '$email'";
+
+          $hasil = mysqli_query($con, $perintahSQL);
+
+          if(!$hasil) {
+            die(mysqli_error($con));
+        }
+
+        if(mysqli_num_rows($hasil) == 0) {
+          echo "
+            <p class='text-center'>Tidak Ada Transaksi</p>
+          ";
+        }
+
+          if($hasil) {
+            while($row = mysqli_fetch_assoc($hasil)) {
+              if($row['email_pembeli'] == $email) {
+                echo "
+                <li class='list-group-item'>Kamu membeli kursus <strong>".$row['namaKursus']. "</strong><span class='red'> (-".(new self)->konversiKeRupiah($row['harga']).")</span></li>
+                ";
+              } else {
+                echo "
+                <li class='list-group-item'>".$row['nama pembeli']." membeli kursus <strong>".$row['namaKursus']."</strong><span class='green'> (+".(new self)->konversiKeRupiah($row['harga']).")</span></li>
                 ";
               }
             }

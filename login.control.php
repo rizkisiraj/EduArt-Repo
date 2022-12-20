@@ -37,7 +37,7 @@ if(isset($_POST['login'])) {
     $_SESSION['keranjang'] = array();
 }
 
-header("location:landing.php");
+header("location:index.php");
 
 
 ?>

@@ -6,3 +6,11 @@ body {
     position: relative;
     overflow-x: hidden;
 }
+
+.red {
+    color: #FF597B;
+}
+
+span.green {
+    color: #A4BE7B;
+}

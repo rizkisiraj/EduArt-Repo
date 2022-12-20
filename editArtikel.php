@@ -1,3 +1,18 @@
+<?php
+include('connect.php');
+
+$id = $_GET['idArtikel'];
+
+$perintahSql = "SELECT idArtikel,namaArtikel,deskripsi,kategori,nama FROM artikel JOIN akun ON artikel.email_penulis = akun.email WHERE idArtikel = $id";
+$hasil = mysqli_query($con,$perintahSql);
+
+$row = array();
+
+if($hasil) {
+    $row = mysqli_fetch_assoc($hasil);    
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +34,9 @@
             <h1>Buat Artikel</h1>
         </div>
         <div class="row">
-            <form action="tambahArtikel.control.php" method="post">
+            <form action="editArtikel.control.php?idArtikel=<?php echo $id?>" method="post">
             <div class="mb-3">
-                <input required name="judul" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Judul">
+                <input value="<?php echo $row['namaArtikel'] ?>" required name="judul" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Judul">
             </div>
             <!-- <div class="mb-3">
                 <input type="text" name="linkFoto" class="form-control" id="exampleInputPhoto1" aria-describedby="emailHelp" placeholder="Link Foto">
@@ -29,17 +44,25 @@
             <div class="mb-3">
             <select required name="kategori" class="form-select" aria-label="Default select example">
                 <option selected>Pilih Kategori</option>
-                <option value="Musik">Musik</option>
-                <option value="Cerita">Cerita</option>
-                <option value="Lukis">Lukis</option>
-                <option value="Tarian">Tarian</option>
+                <?php
+                    $daftarKategori = array('Musik', 'Cerita', 'Lukis', 'Tarian');
+                    for($i = 0; $i < count($daftarKategori); $i++) {
+                        if($row['kategori'] == $daftarKategori[$i]) {
+                        echo "<option value='".$daftarKategori[$i]."' selected>".$daftarKategori[$i]."</option>";
+                        } else {
+                            echo "<option value='".$daftarKategori[$i]."'>".$daftarKategori[$i]."</option>";    
+                        }
+                    }
+                ?>
             </select>
             </div>
             <div class="mb-3">
-            <textarea required name="deskripsi" class="form-control" aria-label="With textarea" placeholder="Deskripsi"></textarea>
+            <textarea required name="deskripsi" class="form-control" aria-label="With textarea" placeholder="Deskripsi"><?php echo $row['deskripsi'];?>
+            </textarea>
             </div>
             <div class="text-end">
-                <button type="submit" class="btn btn-primary">Submit Artikel</button>
+                <button type="submit" class="btn btn-primary">Edit Kursus</button>
+                <a role="button" href="artikelTabel.php" class="btn btn-danger">Cancel</a>
             </div>
         </form>
     </div>
@@ -54,12 +77,12 @@
     if(isset($_SESSION['sukses'])) {
         echo "
         <script>
-        Swal.fire({
+        Swal.fire(
             'Berhasil!',
-            'Artikel telah ditambahkan',
+            'Artikel telah diedit',
             'success'
             ).then(() => {
-                window.location.href = 'articles.php';
+                window.location.href = 'artikelTabel.php';
             })
         </script>
         ";

@@ -21,10 +21,10 @@
 
     ?>
     <section class="container">
-        <h1 class="h4">Daftar Kursus Buatan Kamu</h1>
+        <h1 class="h4">Daftar Artikel Buatan Kamu</h1>
     <div class="list-group">
         <?php
-        DisplayData::displayKursusDiTabel($email,$con);
+        DisplayData::displayArtikelDiTabel($email,$con);
         ?>
     </div>
     </section>

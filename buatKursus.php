@@ -16,16 +16,19 @@
     <section class="bg-green">
     <div class="container py-4 bg-green">
         <div class="row text-center">
-            <h1>Buat Artikel</h1>
+            <h1>Buat Kursus</h1>
         </div>
         <div class="row">
-            <form action="tambahArtikel.control.php" method="post">
+            <form action="tambahKursus.control.php" method="post">
             <div class="mb-3">
                 <input required name="judul" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Judul">
             </div>
-            <!-- <div class="mb-3">
+            <div class="mb-3">
                 <input type="text" name="linkFoto" class="form-control" id="exampleInputPhoto1" aria-describedby="emailHelp" placeholder="Link Foto">
-            </div> -->
+            </div>
+            <div class="mb-3">
+                <input type="number" name="harga" class="form-control" id="exampleInputPhoto1" aria-describedby="emailHelp" placeholder="Harga">
+            </div>
             <div class="mb-3">
             <select required name="kategori" class="form-select" aria-label="Default select example">
                 <option selected>Pilih Kategori</option>
@@ -39,7 +42,7 @@
             <textarea required name="deskripsi" class="form-control" aria-label="With textarea" placeholder="Deskripsi"></textarea>
             </div>
             <div class="text-end">
-                <button type="submit" class="btn btn-primary">Submit Artikel</button>
+                <button type="submit" class="btn btn-primary">Submit Kursus</button>
             </div>
         </form>
     </div>
@@ -54,12 +57,12 @@
     if(isset($_SESSION['sukses'])) {
         echo "
         <script>
-        Swal.fire({
+        Swal.fire(
             'Berhasil!',
-            'Artikel telah ditambahkan',
+            'Kursus telah ditambahkan',
             'success'
             ).then(() => {
-                window.location.href = 'articles.php';
+                window.location.href = 'courses.php';
             })
         </script>
         ";

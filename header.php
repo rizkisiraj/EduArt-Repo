@@ -3,10 +3,12 @@ session_start();
 $userAkun = '';
 if(isset($_SESSION['login'])) {
     $userAkun = $_SESSION['nama'];
+} else {
+    header("location:loginv2.php");
 }
     echo '<nav class="navbar navbar-expand-lg">
     <div class="container-fluid d-flex px-4">
-        <a class="navbar-brand d-block" href="#">
+        <a class="navbar-brand d-block" href="./">
             <img width="120" src="./assets/Logo.png" alt="logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +17,7 @@ if(isset($_SESSION['login'])) {
         <div class="collapse navbar-collapse" id="navbarScroll">
         <ul class="navbar-nav mx-auto my-2 my-lg-0" style="--bs-scroll-height: 100px;">
             <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="landing.php">Home</a>
+                <a class="nav-link" aria-current="page" href="./">Home</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="courses.php">Kursus</a>
@@ -23,6 +25,11 @@ if(isset($_SESSION['login'])) {
                 <li class="nav-item">
                 <a class="nav-link" href="articles.php">
                     Artikel
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="buatKursus.php">
+                    Buat Kursus
                 </a>
                 </li>
                 <li class="nav-item">
